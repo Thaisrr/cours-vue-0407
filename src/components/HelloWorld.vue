@@ -1,58 +1,137 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+  <div id="main">
+
+    <h1>{{ title }}</h1>
+    <p>La syntaxe de template</p>
+
+    <h2>Interpolation</h2>
+    <p>1 + 1 = {{ 1 + 1}}  </p>
+    <p>{{title.toUpperCase()}}</p>
+    <p>{{span}}</p>
+
+    <h2>Attribute Binding</h2>
+
+    <p v-bind:id="super_id">Un super paragraphe</p>
+    <p :id="super_id + 2">Un deuxième super paragraphe</p>
+
+
+    <p :class="dynamic_class">Une classe bindée</p>
+
+    <!-- active la propriété si truthy, et ne la met pas si falsy -->
+    <button :disabled="is_disabled">Ne cliquez pas ici !</button>
+
+
+    <h2>Dynamisme</h2>
+
+    <p>Le click : </p>
+
+    <button v-on:click="sayCoucou">Coucou</button>
+    <button @click="sayCoucou()">Coucou 2</button>
+
+    <button @click="increment">Counter : {{counter}}</button>
+
+    <p :class="color">Je suis un paragraphe coloré</p>
+
+    <button @click="changeColor('red')">Rouge</button>
+    <button @click="changeColor('blue')">Bleu</button>
+    <button @click="changeColor('purple')">Violet</button>
+
+    <h2>Style & Class binding</h2>
+
+    <p :class="color">Une seule classe dynamique </p>
+
+    <input class="static" :class="{error: has_error, 'active': true}"/>
+    <button @click="toggleError">Error</button>
+
+    <p class="static" :class="[color, super_id]">Plusieurs classes dynamiques</p>
+
+    <p :class="[color, {error: has_error}, has_error? classe1 : 'encore-une-classe', classe3]">
+      Des classes super dynamiques
     </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+
+
+    <h3>Style</h3>
+
+    <p :style="{fontSize: size + 'px', background: bg}">Dynamic style</p>
+
+    <p :style="my_style">Object dynamic style</p>
   </div>
+
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  data: function () {
+    return {
+      title: 'Presentation de Vue',
+      span: '<span style="color:green">Coucou</span>',
+      super_id: 'truc',
+      dynamic_class: 'red',
+      is_disabled: true,
+      counter: 0,
+      color: 'blue',
+      has_error: false,
+      classe1: 'classe1',
+      classe2: 'classe2',
+      classe3: 'classe3',
+      size: 25,
+      bg: 'aqua',
+      my_style: {
+        fontSize: '25px',
+        color: 'aqua',
+        background: 'rebeccapurple'
+      },
+
+
+    }
+  },
+  methods: {
+    sayCoucou() {
+      console.log('Coucou')
+    },
+    increment: function () {
+      this.counter++;
+    },
+    changeColor(color) {
+      this.color = color;
+    },
+    toggleError() {
+      this.has_error = !this.has_error;
+    },
+    getColor() {
+      console.log('in get color')
+      return this.has_error? 'blue' : 'pink';
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+
+#main {
+  --main-color: v-bind(getColor());
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+h2 {
+  color:;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+.red {
+  color: red;
 }
-a {
-  color: #42b983;
+
+.blue {
+  color: blue;
 }
+
+.purple {
+  color: purple;
+}
+
+.error {
+  border: solid var(--main-color);
+}
+
 </style>
