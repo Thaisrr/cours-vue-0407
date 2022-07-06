@@ -1,5 +1,5 @@
 <template>
-    <SuperForm :form="fb"/>
+    <SuperForm @submit-form="submit" :form="fb"/>
 </template>
 
 <script>
@@ -13,13 +13,19 @@ export default {
   components: {SuperForm},
   data() {
    return {
-     fb: new Form('Mon Super Form', 'Yeah', [
-       Control.createControl('Titre', 'text')
+     fb: new Form('Mon Super Form', 'Yeah', {
+       title: Control.createControl('Titre', 'text')
            .validation(Validator.required, 'Veuillez entrer un titre'),
-       new Control('Auteur.trice', 'text'),
-       new Control('Note', 'number'),
-     ])
+       author: new Control('Auteur.trice', 'text')
+       .validation(Validator.minLength, "ce nom est trop court", 2  ),
+       grade: new Control('Note', 'number'),
+     })
    }
+  },
+  methods: {
+    submit(book) {
+      console.log('submitted', book)
+    }
   }
 }
 </script>

@@ -16,8 +16,8 @@ export class Control {
         return new Control(label, type)
     }
 
-    validation(type, error) {
-        this.validations.push(new ControlValidation(type, error));
+    validation(type, error, value = undefined) {
+        this.validations.push(new ControlValidation(type, error, value));
         return this;
     }
 

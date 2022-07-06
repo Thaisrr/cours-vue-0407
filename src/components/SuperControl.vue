@@ -1,50 +1,52 @@
 <template>
   <div v-if="control">
     <label :for="control.label">{{control.label}}</label>
-    <input :id="control.label" :type="control.type" @input="this.dirty = true"/>
-    <p v-if="hasRequiredError">{{ getRequiredError  }}</p>
+
+    <input v-model="input_value" :id="control.label" :type="control.type" @input="checkErrors" @change="checkErrors" @blur="checkErrors"/>
+
+    <template v-for="err in errors" :key="err.name">
+      <p v-if="control.hasError(err.validation)">{{err.error_text}}</p>
+    </template>
   </div>
 </template>
 
 <script>
 import {Control} from "@/models/Control";
-import Validator from "@/models/Validator";
+import Validate from "@/models/Validate";
 
 export default {
   name: "SuperControl",
   data() {
     return {
-      value: undefined,
+      input_value: undefined,
       dirty: false
     }
   },
   props: {
-    control : {
-      type: Control
-    }
+    control : Control,
+    property_name: String
   },
   methods: {
     checkErrors() {
-      /*for((validator )in this.control.validations) {
-        validator
-      }*/
+      setTimeout(() => {
+        this.dirty = true;
+        for( let validator of this.control.validations) {
+          console.log('check');
+          const validate = Validate[validator.validation];
+          const isValid = validate(this.input_value, validator.value);
+          console.log(validator.validation, isValid)
+          if(!isValid) this.control.addError(validator.validation);
+          else this.control.removeError(validator.validation)
+          this.$emit('update', this.property_name, this.input_value)
+        }
+      }, (this.dirty)? 0 : 1000)
     }
   },
   computed: {
-    isRequired() {
-      return this.control.validations.findIndex(val => val.validation === Validator.required);
+    errors() {
+      return this.control.validations;
     },
-    hasRequiredError() {
-      return this.dirty && this.isRequired && !this.value;
-    },
-    getRequiredError() {
-      if(this.control ) {
-        const index = this.control.validations.findIndex(val => val.validation === 'required');
-        if(index >= 0) return this.control.validations[index].error;
-      }
 
-      return 'Nope'
-    }
   }
 }
 </script>
