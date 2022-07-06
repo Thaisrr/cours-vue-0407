@@ -1,6 +1,8 @@
 <template>
   <h1>Computed et Watchers</h1>
 
+  <a href="#watchers">Watchers</a>
+
   <h2>V-Model</h2>
 
   <p>
@@ -49,7 +51,7 @@
   <input v-model="fullname"/>
 
 
-  <h2>Watchers: </h2>
+  <h2 id="watchers">Watchers: </h2>
 
   <p>Fruit : {{ fruit }}</p>
 

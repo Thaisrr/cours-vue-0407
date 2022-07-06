@@ -1,22 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <!--<HelloWorld/> -->
-  <!--<DirectivesComponent/> -->
-  <ComputedComponent/>
+  <MyNavigation/>
+
+  <router-view></router-view>
+
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
-//import DirectivesComponent from "@/components/Directives";
-import ComputedComponent from "@/components/Computed";
 
+
+import MyNavigation from "@/components/MyNavigation";
 export default {
   name: 'App',
-  components: {
-    ComputedComponent,
-  //  DirectivesComponent,
-    //HelloWorld
-  }
+  components: {MyNavigation},
 }
 </script>
 
