@@ -49,3 +49,75 @@ console.log(color); // red
 console.log(arbre); // framboisier
 
 const fruit_copy = {...fruit};
+
+
+
+
+
+
+
+
+
+
+// Requêtes HTTP
+
+
+function getDatas() {
+    fetch.get('apiurl')
+        .then( response => response.json())
+        .then(changed => {
+            console.log(changed)
+        })
+        .catch(err => console.error(err))
+        .finally(() => console.info('Finito !'))
+}
+
+let donnees;
+
+async function getDataModerne() {
+    try {
+        const response = await axios.get('monapi');
+        console.log(response);
+        donnee = await changed(response)
+    } catch (err) {
+        console.error(err)
+    } finally {
+        console.info('finito')
+    }
+}
+
+getDataModerne()
+
+
+
+
+function change(donnne) {
+    return axios.get('machin') // promesse
+}
+
+change.then(bidule => //....)
+
+
+
+getDatas();
+
+console.info('Un truc super important')
+
+
+
+const sum = (a, b, ...numbs) => a + b + numbs.reduce((prev, curr) =>  prev + curr)
+
+console.log(sum(10, 20, 52, 56))
+
+
+const legumes = ['Carottes', 'Brocolis', 'Frites'];
+
+legumes.reduce((previous, current) => {
+    console.log('previous : ', previous);
+    console.log('current : ', current);
+    return 'machin'
+})
+
+
+
+

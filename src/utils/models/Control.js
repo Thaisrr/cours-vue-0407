@@ -1,4 +1,4 @@
-import {ControlValidation} from "@/models/ControlValidation";
+import {ControlValidation} from "@/utils/models/ControlValidation";
 
 export class Control {
     label;

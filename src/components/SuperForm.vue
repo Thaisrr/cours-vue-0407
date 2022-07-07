@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {Form} from "@/models/Form";
+import {Form} from "@/utils/models/Form";
 import SuperControl from "@/components/SuperControl";
 
 export default {

@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import {Control} from "@/models/Control";
-import Validate from "@/models/Validate";
+import {Control} from "@/utils/models/Control";
+import Validate from "@/utils/models/Validate";
 
 export default {
   name: "SuperControl",

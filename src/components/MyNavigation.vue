@@ -19,6 +19,12 @@
       <li>
         <router-link :to="{name: 'fb'}">FormBuilder Test</router-link>
       </li>
+      <li>
+        <router-link :to="{name: 'life'}">Cycle de Vie</router-link>
+      </li>
+      <li>
+        <router-link :to="{name: 'req'}">Requêtes</router-link>
+      </li>
     </ul>
   </nav>
 </template>

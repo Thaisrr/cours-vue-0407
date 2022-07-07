@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import {Form} from "@/models/Form";
-import {Control} from "@/models/Control";
+import {Form} from "@/utils/models/Form";
+import {Control} from "@/utils/models/Control";
 import SuperForm from "@/components/SuperForm";
-import Validator from "@/models/Validator";
+import Validator from "@/utils/models/Validator";
 
 export default {
   name: "FormBuilder",
@@ -14,11 +14,9 @@ export default {
   data() {
    return {
      fb: new Form('Mon Super Form', 'Yeah', {
-       title: Control.createControl('Titre', 'text')
-           .validation(Validator.required, 'Veuillez entrer un titre'),
-       author: new Control('Auteur.trice', 'text')
-       .validation(Validator.minLength, "ce nom est trop court", 2  ),
-       grade: new Control('Note', 'number'),
+       title: Control.createControl('Titre', 'text').validation(Validator.required, 'Veuillez entrer un titre'),
+       author: new Control('Auteur.trice', 'text').validation(Validator.minLength, "ce nom est trop court", 2  ),
+       grade: new Control('Note', 'number').validation(Validator.min, "Trop bas", 0).validation(Validator.max, "Trop haut", 5)
      })
    }
   },

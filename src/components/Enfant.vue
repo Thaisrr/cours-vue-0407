@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import {SuperObject} from "@/models/SuperObject";
+import {SuperObject} from "@/utils/models/SuperObject";
 
 export default {
   name: "MyEnfant",
