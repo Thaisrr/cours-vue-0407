@@ -25,6 +25,12 @@
       <li>
         <router-link :to="{name: 'req'}">Requêtes</router-link>
       </li>
+      <li>
+        <router-link :to="{name: 'router', params: {title : 'Mon Paramètre'}}">Router</router-link>
+      </li>
+      <li>
+        <router-link :to="{name: 'secret'}">[Bloquée] Secret</router-link>
+      </li>
     </ul>
   </nav>
 </template>
@@ -35,6 +41,14 @@ name: "MyNavigation"
 }
 </script>
 
-<style scoped>
+<style>
+
+.router-link-active:link, .router-link-active:visited {
+  border: solid indigo;
+}
+
+.router-link-exact-active:link, .router-link-exact-active:visited  {
+  color: green;
+}
 
 </style>

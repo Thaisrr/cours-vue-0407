@@ -95,19 +95,19 @@ function change(donnne) {
     return axios.get('machin') // promesse
 }
 
-change.then(bidule => //....)
+//change.then(bidule => //....)
 
 
 
-getDatas();
+//getDatas();
 
-console.info('Un truc super important')
+console.info('Un truc super important');
 
 
 
-const sum = (a, b, ...numbs) => a + b + numbs.reduce((prev, curr) =>  prev + curr)
+//const sum = (a, b, ...numbs) => a + b + numbs.reduce((prev, curr) =>  prev + curr)
 
-console.log(sum(10, 20, 52, 56))
+//console.log(sum(10, 20, 52, 56))
 
 
 const legumes = ['Carottes', 'Brocolis', 'Frites'];
@@ -117,6 +117,16 @@ legumes.reduce((previous, current) => {
     console.log('current : ', current);
     return 'machin'
 })
+
+
+let a;
+
+a = a || 'coucou';
+
+a = a && 'coucou';
+
+a = a ?? 'coucou';
+
 
 
 
