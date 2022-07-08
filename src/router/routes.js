@@ -15,6 +15,7 @@ import guard1 from "@/guards/guard1";
 import guard2 from "@/guards/guard2";
 import VuexComponent from "@/pages/VuexComponent";
 import PiniaComponent from "@/pages/PiniaComponent";
+import CompostionApi from "@/pages/CompostionApi";
 
 const routes = [
     {path: '/presentation', name: 'pres', component: HelloWorld, beforeEnter: [guard1, guard2]},
@@ -56,6 +57,7 @@ const routes = [
     },
     {path: '/vuex', name: 'vuex', component: VuexComponent},
     {path: '/pinia', name: 'pinia', component: PiniaComponent},
+    {path: '/composition', name: 'compo', component: CompostionApi},
     {path: '/', redirect: '/presentation'},
     {path: '/:pathMatch(.*)*', component: NotFound}
 ]

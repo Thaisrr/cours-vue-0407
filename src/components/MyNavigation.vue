@@ -40,7 +40,11 @@
       <li>
         {{cocktail}}
       </li>
+      <li>
+        <router-link :to="{name: 'compo'}">Composition API</router-link>
+      </li>
     </ul>
+
   </nav>
 </template>
 
