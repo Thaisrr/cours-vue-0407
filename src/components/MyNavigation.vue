@@ -31,13 +31,28 @@
       <li>
         <router-link :to="{name: 'secret'}">[Bloquée] Secret</router-link>
       </li>
+      <li>
+        <router-link :to="{name: 'vuex'}">Vuex</router-link>
+      </li>
+      <li>
+        <router-link :to="{name: 'pinia'}">Pinia</router-link>
+      </li>
+      <li>
+        {{cocktail}}
+      </li>
     </ul>
   </nav>
 </template>
 
 <script>
+import {mapState} from "pinia";
+import {useColadaStore} from "../../store/colada";
+
 export default {
-name: "MyNavigation"
+name: "MyNavigation",
+  computed: {
+    ...mapState(useColadaStore, ['cocktail'])
+  }
 }
 </script>
 

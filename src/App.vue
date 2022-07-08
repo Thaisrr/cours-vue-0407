@@ -12,6 +12,10 @@ import MyNavigation from "@/components/MyNavigation";
 export default {
   name: 'App',
   components: {MyNavigation},
+  mounted() {
+    this.$store.commit('recupCounter');
+    this.$store.dispatch('getJoke');
+  }
 }
 </script>
 

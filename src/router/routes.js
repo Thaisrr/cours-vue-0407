@@ -13,6 +13,8 @@ import View2 from "@/pages/router-views/View2";
 import Secret from "@/pages/Secret";
 import guard1 from "@/guards/guard1";
 import guard2 from "@/guards/guard2";
+import VuexComponent from "@/pages/VuexComponent";
+import PiniaComponent from "@/pages/PiniaComponent";
 
 const routes = [
     {path: '/presentation', name: 'pres', component: HelloWorld, beforeEnter: [guard1, guard2]},
@@ -52,6 +54,8 @@ const routes = [
             }
         }
     },
+    {path: '/vuex', name: 'vuex', component: VuexComponent},
+    {path: '/pinia', name: 'pinia', component: PiniaComponent},
     {path: '/', redirect: '/presentation'},
     {path: '/:pathMatch(.*)*', component: NotFound}
 ]
